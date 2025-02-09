@@ -4,14 +4,9 @@ import React from "react";
 interface TopNavProps {
   isOpen: boolean;
   onToggle: () => void;
-  onCloseSidebar: () => void;
 }
 
-const TopNav: React.FC<TopNavProps> = ({
-  isOpen,
-  onToggle,
-  onCloseSidebar,
-}) => {
+const TopNav: React.FC<TopNavProps> = ({ isOpen, onToggle }) => {
   return (
     <div
       className={`h-16 bg-white border-b fixed top-0 right-0 left-0 md:left-20 z-10 shadow-sm transition-all duration-300 ${
@@ -21,10 +16,7 @@ const TopNav: React.FC<TopNavProps> = ({
       <div className="flex items-center justify-between h-full px-4 sm:px-6">
         <div className="flex items-center space-x-4">
           <button
-            onClick={() => {
-              onToggle();
-              if (isOpen) onCloseSidebar(); // Close sidebar when opened
-            }}
+            onClick={onToggle}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
             aria-label="Toggle sidebar"
           >
