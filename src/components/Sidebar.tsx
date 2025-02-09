@@ -57,7 +57,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <div
       ref={sidebarRef}
       className={`fixed left-0 top-0 h-screen bg-gradient-to-b from-blue-900 to-blue-800 text-white transition-all duration-300 z-20
-      ${isOpen ? "w-64" : "w-0 md:w-20"}`}
+      ${isOpen ? "w-64" : "w-0 md:w-64"}`} // Change width for mobile view
     >
       <div
         className={`h-full ${
@@ -69,14 +69,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             <GraduationCap size={24} className="mr-2" />
             <h1
               className={`text-xl font-bold transition-opacity duration-300 ${
-                isOpen ? "opacity-100" : "hidden md:hidden"
+                isOpen ? "opacity-100" : "hidden md:block"
               }`}
             >
               ExamPro
             </h1>
           </div>
           <button
-            onClick={onClose}
+            onClick={onClose} // Close the sidebar when clicking the close icon
             className="md:hidden p-2 rounded-full hover:bg-gray-600"
           >
             <X size={20} className="text-white" />
@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <item.icon size={18} className="text-blue-200 shrink-0" />
               <span
                 className={`text-sm font-medium whitespace-nowrap transition-opacity duration-300
-                ${isOpen ? "opacity-100" : "hidden md:hidden"}`}
+                ${isOpen ? "opacity-100" : "hidden md:block"}`} // Show label only if sidebar is open
               >
                 {item.label}
               </span>
@@ -110,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             <LogOut size={18} className="shrink-0" />
             <span
               className={`text-sm font-medium whitespace-nowrap transition-opacity duration-300
-              ${isOpen ? "opacity-100" : "hidden md:hidden"}`}
+              ${isOpen ? "opacity-100" : "hidden md:block"}`}
             >
               Logout
             </span>

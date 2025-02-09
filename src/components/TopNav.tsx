@@ -23,7 +23,7 @@ const TopNav: React.FC<TopNavProps> = ({
           <button
             onClick={() => {
               onToggle();
-              if (!isOpen) onCloseSidebar(); // Hide sidebar when opened
+              if (isOpen) onCloseSidebar(); // Close sidebar when opened
             }}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
             aria-label="Toggle sidebar"
