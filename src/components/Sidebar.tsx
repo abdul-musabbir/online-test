@@ -25,34 +25,62 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     { icon: Calendar, label: "Schedule", active: false },
     { icon: MessageSquare, label: "Messages", active: false },
     { icon: Settings, label: "Settings", active: false },
-    { icon: LogOut, label: "Log Out", active: false },
   ];
 
   return (
     <div
-      className={`${
-        isOpen ? "w-64" : "w-20"
-      } bg-gray-800 text-white h-full transition-width duration-300`}
+      className={`fixed left-0 top-0 h-screen bg-gradient-to-b from-blue-900 to-blue-800 text-white transition-all duration-300 z-20
+      ${isOpen ? "w-64" : "w-0 md:w-20"}`}
     >
-      <div className="flex justify-between items-center p-4">
-        <span className={`text-xl font-bold ${isOpen ? "block" : "hidden"}`}>
-          Sidebar
-        </span>
-      </div>
-      <div className="flex flex-col">
-        {menuItems.map((item, index) => (
-          <div
-            key={index}
-            className={`flex items-center p-3 ${
-              item.active ? "bg-blue-600" : "hover:bg-gray-700"
+      <div
+        className={`h-full ${
+          isOpen ? "opacity-100" : "opacity-0 md:opacity-100"
+        } transition-opacity duration-300`}
+      >
+        <div className="flex items-center justify-center h-16 mb-8">
+          <GraduationCap size={24} className="mr-2" />
+          <h1
+            className={`text-xl font-bold transition-opacity duration-300 ${
+              isOpen ? "opacity-100" : "hidden md:hidden"
             }`}
           >
-            <item.icon className="w-5 h-5 mr-3" />
-            <span className={`${isOpen ? "block" : "hidden"}`}>
-              {item.label}
+            ExamPro
+          </h1>
+        </div>
+
+        <nav className="space-y-1.5 px-3">
+          {menuItems.map((item, index) => (
+            <div
+              key={index}
+              className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer transition-all duration-200
+                ${
+                  item.active
+                    ? "bg-white/10 text-white shadow-lg backdrop-blur-sm"
+                    : "hover:bg-white/5 hover:translate-x-1"
+                }`}
+            >
+              <item.icon size={18} className="text-blue-200 shrink-0" />
+              <span
+                className={`text-sm font-medium whitespace-nowrap transition-opacity duration-300
+                ${isOpen ? "opacity-100" : "hidden md:hidden"}`}
+              >
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </nav>
+
+        <div className="absolute bottom-8 left-0 w-full px-3">
+          <div className="flex items-center space-x-3 p-3 rounded-lg cursor-pointer hover:bg-red-500/20 text-red-200 transition-colors">
+            <LogOut size={18} className="shrink-0" />
+            <span
+              className={`text-sm font-medium whitespace-nowrap transition-opacity duration-300
+              ${isOpen ? "opacity-100" : "hidden md:hidden"}`}
+            >
+              Logout
             </span>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
